@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+  <title>PS4 Ads</title>
+<style type="text/css">
+  #player_container {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    position: absolute;
+  }
+</style><style>.nexplayer_ad_container {
+    width: 100%;
+    height: 100%;
+    display: inherit;
+    position: absolute;
+    top: 0px;
+}
+
+.rmp-container {
+    display: inherit;
+    height: inherit !important;
+}</style></head>
+
+<body>
+
+  <div id="player_container"><div id="player" style="width: 100%; height: auto; position: relative;"><div id="nexplayer_ad_container" class="nexplayer_ad_container" style="display: inherit;"></div></div></div>
+  <script src="./nexplayer-1.2.6.js"></script>
+<div>
+
+<script>
+
+  //#region Player Events https://nexplayer.github.io/TizenWebOS/#/ps4/api?id=player-events
+  nexplayer.PlayerEvents("statechanged", function (e) {
+    console.log(" STATE CHANGED", e);
+  });
+  nexplayer.PlayerEvents("paused", function (e) {
+    console.log("PAUSED");
+  });
+  nexplayer.PlayerEvents("playing", function (e) {
+    console.log("PLAYING");
+  });
+  nexplayer.PlayerEvents("buffering", function (e) {
+    console.log("BUFFERING");
+  });
+  nexplayer.PlayerEvents("seeking", function (e) {
+    console.log("SEEKING");
+  });
+  nexplayer.PlayerEvents("seeked", function (e) {
+    console.log("SEEKED");
+  });
+  nexplayer.PlayerEvents("stalled", function (e) {
+    console.log("STALLED");
+  });
+  nexplayer.PlayerEvents("durationchange", function (e) {
+    console.log("DURATION CHANGE", e);
+  });
+  nexplayer.PlayerEvents("canplay", function (e) {
+    console.log("CAN PLAY");
+  });
+  nexplayer.PlayerEvents("loadeddata", function (e) {
+    console.log("LOADED DATA");
+  });
+  nexplayer.PlayerEvents("videofirstquartile", function (e) {
+    console.log(" VIDEO FIRST QUARTILE", e);
+  });
+  nexplayer.PlayerEvents("videoProgressTime", function (e) {
+    console.log("VIDEO PROGRESS TIME", e);
+  });
+  nexplayer.PlayerEvents("videothirdquartile", function (e) {
+    console.log("VIDEO THIRD QUARTILE", e);
+  });
+  nexplayer.PlayerEvents("nexplayererror", function (e) {
+    console.log("NEXPLAYER ERROR", e);
+  });
+  //#endregion
+
+  //#region Ads Events https://nexplayer.github.io/TizenWebOS/#/ps4/api?id=ads-events
+  nexplayer.AdsEvents("adstarted", function (e) {
+    console.log('AD STARTED', e);
+    nexplayer.AdInstance().setMute(false);
+    nexplayer.AdInstance().getAdDuration();
+    nexplayer.AdInstance().getAdRemainingTime();
+  });
+  nexplayer.AdsEvents("adpodsinfo", function (e) {
+    console.log('AD PODS INFO', e);
+  });
+  nexplayer.AdsEvents("aderror", function (e) {
+    console.log('AD ERROR', e);
+  });
+  nexplayer.AdsEvents("adblockstarted", function (e) {
+    console.log('AD BLOCK START', e);
+  });
+  nexplayer.AdsEvents("adblockend", function (e) {
+    console.log('AD BLOCK END', e);
+  });
+  nexplayer.AdsEvents("adstarted", function (e) {
+    console.log('AD STARTED', e);
+  });
+  nexplayer.AdsEvents("adcomplete", function (e) {
+    console.log('AD COMPLETE', e);
+  });
+  nexplayer.AdsEvents("adthirdquartile", function (e) {
+    console.log('AD THIRDQUARTILE', e);
+  });
+  nexplayer.AdsEvents("admidpoint", function (e) {
+    console.log('AD MIDPOINT', e);
+  });
+  nexplayer.AdsEvents("adfirstquartile", function (e) {
+    console.log('AD FIRST QUARTILE', e);
+  });
+  nexplayer.AdsEvents("addestroyed", function (e) {
+    console.log('AD DESTROYED', e);
+  });
+  nexplayer.AdsEvents("adtagstartloading", function (e) {
+    console.log('AD TAG START LOADING', e);
+  });
+  nexplayer.AdsEvents("adloaded", function (e) {
+    console.log('AD LOADED', e);
+  });
+  nexplayer.AdsEvents("adresumed", function (e) {
+    console.log('AD RESUMED', e);
+  });
+  nexplayer.AdsEvents("adpaused", function (e) {
+    console.log('AD PAUSED', e);
+  });
+  nexplayer.AdsEvents("adclick", function (e) {
+    console.log('AD CLICK', e);
+  });
+  nexplayer.AdsEvents("adclosed", function (e) {
+    console.log('AD CLOSED', e);
+  });
+  nexplayer.AdsEvents("addurationchange", function (e) {
+    console.log('AD DURATION CHANGE', e);
+  });
+  nexplayer.AdsEvents("adimpression", function (e) {
+    console.log('AD IMPRESSION', e);
+  });
+  nexplayer.AdsEvents("adskipped", function (e) {
+    console.log('AD SKIPPED', e);
+  });
+  //#endregion
+
+  var player = null;
+
+  var cb = function (nexplayerInstance, video) {
+    console.log("callbacksForPlayer!");
+    console.log(nexplayerInstance);
+
+    player = nexplayerInstance;
+  }
+
+  nexplayer.Setup({
+    key: '5e9dd7b892f3493ec4667e66',
+    div: document.getElementById('player_container'),
+    debug: true,
+    autoplay: true,
+    resumePosition: 0,
+    callbacksForPlayer: cb,
+    src: 'https://media.axprod.net/TestVectors/Dash/not_protected_dash_1080p_h264/manifest.mpd',
+    // Google Sample tag (VMAP Pre-roll):
+    vast: 'https://pubads.g.doubleclick.net/gampad/ads?iu=/21775744923/external/vmap_ad_samples&sz=640x480&cust_params=sample_ar%3Dpreonly&ciu_szs=300x250%2C728x90&gdfp_req=1&ad_rule=1&output=vmap&unviewed_position_start=1&env=vp&impl=s&correlator=' + Date.now(),
+  });
+</script>
+
+</div></body></html>

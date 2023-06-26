@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vmap:VMAP xmlns:vmap="http://www.iab.net/videosuite/vmap" version="1.0">
+    <vmap:AdBreak timeOffset="start" breakType="linear" breakId="preroll">
+        <vmap:AdSource id="preroll-ads" allowMultipleAds="true" followRedirects="true">
+            <vmap:AdTagURI templateType="vast3">
+                
+<![CDATA[https://pubads.g.doubleclick.net/gampad/ads?slotname=/5479/craveen_starzatexace_cotv_lgtv/playerpage/na_no-mans-land&sz=1x1&ciu_szs=&cust_params=genre%3Ddrama,thriller,war%26adtarget%3D%26subtype%3Dcravetvsestarz%26pagetitle%3Depisode-7%26mediatype%3Dseries%26contenttype%3Depisode%26revshare%3Dna%26lang%3Den-CA%26adrule%3D%26&url=ca.crave.cravego&unviewed_position_start=1&output=xml_vast3&impl=s&env=vp&gdfp_req=1&ad_rule=0&video_url_to_fetch=ca.crave.cravego&useragent=Mozilla/5.0+(Macintosh%3B+Intel+Mac+OS+X+10_15_7)+AppleWebKit/537.36+(KHTML,+like+Gecko)+Chrome/112.0.0.0+Safari/537.36,gzip(gfe)&vad_type=linear&vpos=preroll&pod=1&pmnd=0&pmxd=80000&pmad=3&max_ad_duration=31000&vrid=1121168&sid=7967ab2b-944d-4cea-8aec-b274b915ac37&rdid=10558219-c6ab-4bd0-98c2-42bc2b11a398&correlator=1687766012&scor=1383467699&an=crave&idtype=lgudid&cmsid=2466100&video_doc_id=4049887&vpa=auto&pp=00000000-0000-0000-0000-000000000000&kfa=0&tfcd=0]]>
+            </vmap:AdTagURI>
+        </vmap:AdSource>
+    </vmap:AdBreak>
+</vmap:VMAP>
