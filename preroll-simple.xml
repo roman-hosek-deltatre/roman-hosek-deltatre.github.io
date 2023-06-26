@@ -1,0 +1,21 @@
+<VAST xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="vast.xsd"
+    version="3.0">
+    <Ad id="710742496">
+        <InLine>
+            <AdSystem>GDFP</AdSystem>
+            <AdTitle>Preroll simple</AdTitle>
+            <Creatives>
+                <Creative id="57861186616" sequence="1">
+                    <Linear>
+                        <Duration>00:00:15</Duration>
+                        <MediaFiles>
+                              <MediaFile id="GDFP" delivery="progressive" width="640" height="360" type="video/mp4" bitrate="719" scalable="true" maintainAspectRatio="true">
+                                <![CDATA[https://ctvsales-pmd.akamaized.net/CTVSales/Ads/2023-02-03/STARZ_-__FEB_MONTHLY_(15)_099B3A72A2067595/STARZ_-__FEB_MONTHLY_(15)-Adaptive_02.mp4]]>
+                            </MediaFile>
+                        </MediaFiles>
+                    </Linear>
+                </Creative>
+            </Creatives>
+        </InLine>
+    </Ad>
+</VAST>
