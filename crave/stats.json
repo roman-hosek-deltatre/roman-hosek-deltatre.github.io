@@ -3,9 +3,9 @@
     "app": "app.cc27e4a.c.js",
     "axis": [
       "9.a2a9987.css",
-      "axis.72c088d.c.js"
+      "axis.79c876b.c.js"
     ],
-    "manifest": "manifest.c167122.js",
+    "manifest": "manifest.0879d78.js",
     "vendors~axis": "vendors~axis.317bdce.c.js"
   },
   "assets": [
@@ -568,8 +568,8 @@
       "emitted": false
     },
     {
-      "name": "axis.72c088d.c.js",
-      "size": 1154133,
+      "name": "axis.79c876b.c.js",
+      "size": 1154091,
       "chunks": [
         9
       ],
@@ -1110,7 +1110,7 @@
       "emitted": false
     },
     {
-      "name": "manifest.c167122.js",
+      "name": "manifest.0879d78.js",
       "size": 3819,
       "chunks": [
         10
@@ -1162,7 +1162,7 @@
       "emitted": false
     }
   ],
-  "hash": "3e7bfed",
+  "hash": "94d1c5b",
   "publicPath": "./",
   "namedChunkGroups": {
     "app": {
@@ -1171,7 +1171,7 @@
         8
       ],
       "assets": [
-        "manifest.c167122.js",
+        "manifest.0879d78.js",
         "app.cc27e4a.c.js"
       ],
       "children": {},
@@ -1185,7 +1185,7 @@
       "assets": [
         "vendors~axis.317bdce.c.js",
         "9.a2a9987.css",
-        "axis.72c088d.c.js"
+        "axis.79c876b.c.js"
       ],
       "children": {},
       "childAssets": {}
