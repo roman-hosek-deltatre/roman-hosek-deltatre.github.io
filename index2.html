@@ -1,165 +1,157 @@
 <!DOCTYPE html>
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-  <title>TEST</title>
-<style type="text/css">
-  #player_container {
-    width: 100%;
-    height: 100%;
-    margin: auto;
-    position: absolute;
-  }
-</style><style>.nexplayer_ad_container {
-    width: 100%;
-    height: 100%;
-    display: inherit;
-    position: absolute;
-    top: 0px;
-}
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Bell Ads Requirements</title>
+  <style type="text/css">
+    body {
+      background-color: #161616;
+      color: white;
+    }
 
-.rmp-container {
-    display: inherit;
-    height: inherit !important;
-}</style></head>
+    body.no-scroll {
+      overflow: hidden;
+    }
 
+    #back {
+      cursor: pointer;
+      height: 25px;
+      left: 20px;
+      position: fixed;
+      top: 20px;
+      width: 25px;
+      visibility: hidden;
+    }
+
+    #player-container {
+      margin: auto;
+      position: absolute;
+      width: 75%;
+      height: 75%;
+      visibility: visible;
+    }
+
+    @media (max-width: 600px) {
+      #player-container {
+        padding-top: 56.25%;
+        width: 100%;
+      }
+    }
+
+    #player {
+      background-color: black;
+      height: 100%;
+      overflow: hidden;
+      position: absolute;
+      top: 0px;
+      width: 100%;
+    }
+
+    .center {
+      margin: auto;
+      padding: 10px;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      position: absolute;
+    }
+  </style>
+</head>
 <body>
+  <div id="player-container" class="center">
+      <div id="player"></div>
+  </div>
+  <script src="./nexplayer4.js"></script>
+  <script type="text/javascript">
+      let player = null;
+      let video = null;
 
-  <div id="player_container"><div id="player" style="width: 100%; height: auto; position: relative;"><div id="nexplayer_ad_container" class="nexplayer_ad_container" style="display: inherit;"></div></div></div>
-  <script src="./nexplayer-web.js"></script>
-<div>
+      function initPlayer () {
+        const callBackWithPlayers = function (nexplayerInstance, videoElement) {
+          player = nexplayerInstance;
+          video = videoElement;
+          // Disable PiP
+          video.disablePictureInPicture = true;
+          // Listen to this event in case the HTMLMediaElement's property
+          // 'disablePictureInPicture' is set to false
+          video.addEventListener('enterpictureinpicture', () => {
+            console.log('Entering PiP mode', document.pictureInPictureElement);
+            if (document.pictureInPictureElement) {
+              // Exit the PiP mode immediately
+              document.exitPictureInPicture();
+              // Deactivate again
+              video.disablePictureInPicture = true;
+            }
+          });
 
-<script>
+        }
+        const nexDrmInfoWvBell = {
+            NexDRMType: 'com.widevine.alpha',
+            NexDRMKey: 'https://license-staging.9c9media.ca/widevine',
+        };
+        const nexDrmInfoPrBell = {
+            NexDRMType: 'com.microsoft.playready',
+            NexDRMKey: 'https://license-staging.9c9media.ca/playready',
+        };
+        let drm = null;
+        let src = null;
+        if (navigator.userAgent.indexOf('PlayStation') !== -1) {
+          drm = nexDrmInfoPrBell;
+          src = 'https://u1.video.9c9media.com/video/v1/126503/dash/playready/zultimate-01010101/manifest.mpd';
+        } else {
+          drm = nexDrmInfoWvBell;
+          src = 'https://u1.video.9c9media.com/video/v1/126503/dash/widevine/zultimate-01010101/manifest.mpd';
+        }
 
-  //#region Player Events https://nexplayer.github.io/TizenWebOS/#/ps4/api?id=player-events
-  nexplayer.PlayerEvents("statechanged", function (e) {
-    console.log(" STATE CHANGED", e);
-  });
-  nexplayer.PlayerEvents("paused", function (e) {
-    console.log("PAUSED");
-  });
-  nexplayer.PlayerEvents("playing", function (e) {
-    console.log("PLAYING");
-  });
-  nexplayer.PlayerEvents("buffering", function (e) {
-    console.log("BUFFERING");
-  });
-  nexplayer.PlayerEvents("seeking", function (e) {
-    console.log("SEEKING");
-  });
-  nexplayer.PlayerEvents("seeked", function (e) {
-    console.log("SEEKED");
-  });
-  nexplayer.PlayerEvents("stalled", function (e) {
-    console.log("STALLED");
-  });
-  nexplayer.PlayerEvents("durationchange", function (e) {
-    console.log("DURATION CHANGE", e);
-  });
-  nexplayer.PlayerEvents("canplay", function (e) {
-    console.log("CAN PLAY");
-  });
-  nexplayer.PlayerEvents("loadeddata", function (e) {
-    console.log("LOADED DATA");
-  });
-  nexplayer.PlayerEvents("videofirstquartile", function (e) {
-    console.log(" VIDEO FIRST QUARTILE", e);
-  });
-  nexplayer.PlayerEvents("videoProgressTime", function (e) {
-    console.log("VIDEO PROGRESS TIME", e);
-  });
-  nexplayer.PlayerEvents("videothirdquartile", function (e) {
-    console.log("VIDEO THIRD QUARTILE", e);
-  });
-  nexplayer.PlayerEvents("nexplayererror", function (e) {
-    console.log("NEXPLAYER ERROR", e);
-  });
-  //#endregion
+        nexplayer.AdsEvents('adblockstart', () => {
+          // When the ads start add the ad redirect behavior on clicking the player container
+          const playerContainer = document.getElementById('player-container');
+          if (playerContainer) {
+            playerContainer.onclick = () => {
+              const adVideo = document.getElementsByClassName("rmp-video")[0];
+              adVideo && adVideo.click();
+            };
+          }
+        });
+        nexplayer.AdsEvents('adblockend', () => {
+          // When the ads start remove the ad redirect behavior on clicking the player container
+          const playerContainer = document.getElementById('player-container');
+          if (playerContainer) {
+            playerContainer.onclick = null;
+          }
+        });
+        nexplayer.Setup({
+          key: "5e9dd7b892f3493ec4667e66",
+          div: document.getElementById('player'),
+          autoplay: true,
+          mutedAtStart: true,
+          useDefaultControls: true,
+          debug: true,
+          callbacksForPlayer: callBackWithPlayers,
+          drm: [drm],
+          src: src,
+          adsMode: 'ima',
+          vast: 'https://pubads.g.doubleclick.net/gampad/ads?iu=/21775744923/external/' +
+          'vmap_ad_samples&sz=640x480&cust_params=sample_ar%3Dpreonly&ciu_szs=300x250%2C728x90&gdfp_req=1&' +
+          'ad_rule=1&output=vmap&unviewed_position_start=1&env=vp&impl=s&correlator=' + Date.now(),
+          configuration: {
+            drm: {
+              advanced: {
+                  'com.microsoft.playready': {
+                      distinctiveIdentifierRequired: true,
+                  },
+              }
+            },
+          },
+          // Use this property when the app detects that the user resumes from
+          // a bookmark or is in session for more than 40 minutes.
+          resumePosition: 60,
+        });
+      };
 
-  //#region Ads Events https://nexplayer.github.io/TizenWebOS/#/ps4/api?id=ads-events
-  nexplayer.AdsEvents("adstarted", function (e) {
-    console.log('AD STARTED', e);
-    nexplayer.AdInstance().setMute(false);
-    nexplayer.AdInstance().getAdDuration();
-    nexplayer.AdInstance().getAdRemainingTime();
-  });
-  nexplayer.AdsEvents("adpodsinfo", function (e) {
-    console.log('AD PODS INFO', e);
-  });
-  nexplayer.AdsEvents("aderror", function (e) {
-    console.log('AD ERROR', e);
-  });
-  nexplayer.AdsEvents("adblockstarted", function (e) {
-    console.log('AD BLOCK START', e);
-  });
-  nexplayer.AdsEvents("adblockend", function (e) {
-    console.log('AD BLOCK END', e);
-  });
-  nexplayer.AdsEvents("adstarted", function (e) {
-    console.log('AD STARTED', e);
-  });
-  nexplayer.AdsEvents("adcomplete", function (e) {
-    console.log('AD COMPLETE', e);
-  });
-  nexplayer.AdsEvents("adthirdquartile", function (e) {
-    console.log('AD THIRDQUARTILE', e);
-  });
-  nexplayer.AdsEvents("admidpoint", function (e) {
-    console.log('AD MIDPOINT', e);
-  });
-  nexplayer.AdsEvents("adfirstquartile", function (e) {
-    console.log('AD FIRST QUARTILE', e);
-  });
-  nexplayer.AdsEvents("addestroyed", function (e) {
-    console.log('AD DESTROYED', e);
-  });
-  nexplayer.AdsEvents("adtagstartloading", function (e) {
-    console.log('AD TAG START LOADING', e);
-  });
-  nexplayer.AdsEvents("adloaded", function (e) {
-    console.log('AD LOADED', e);
-  });
-  nexplayer.AdsEvents("adresumed", function (e) {
-    console.log('AD RESUMED', e);
-  });
-  nexplayer.AdsEvents("adpaused", function (e) {
-    console.log('AD PAUSED', e);
-  });
-  nexplayer.AdsEvents("adclicked", function (e) {
-    console.log('AD CLICK', e);
-  });
-  nexplayer.AdsEvents("adclosed", function (e) {
-    console.log('AD CLOSED', e);
-  });
-  nexplayer.AdsEvents("addurationchanged", function (e) {
-    console.log('AD DURATION CHANGE', e);
-  });
-  nexplayer.AdsEvents("adimpression", function (e) {
-    console.log('AD IMPRESSION', e);
-  });
-  nexplayer.AdsEvents("adskipped", function (e) {
-    console.log('AD SKIPPED', e);
-  });
-  //#endregion
-
-  var player = null;
-
-  var cb = function (nexplayerInstance, video) {
-    console.log("callbacksForPlayer!");
-    console.log(nexplayerInstance);
-
-    player = nexplayerInstance;
-  }
-
-  nexplayer.Setup({
-    key: '5e9dd7b892f3493ec4667e66',
-    div: document.getElementById('player_container'),
-    debug: true,
-    autoplay: true,
-    resumePosition: 60,
-    callbacksForPlayer: cb,
-    src: 'https://media.axprod.net/TestVectors/Dash/not_protected_dash_1080p_h264/manifest.mpd',
-    // Google Sample tag (VMAP Pre-roll):
-    vast: 'https://roman-hosek-deltatre.github.io/ads/vmap-full.xml',
-  });
-</script>
-
-</div></body></html>
+      initPlayer();
+  </script>
+</body>
+</html>
