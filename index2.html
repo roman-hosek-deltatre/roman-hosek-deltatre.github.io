@@ -72,57 +72,8 @@
         const callBackWithPlayers = function (nexplayerInstance, videoElement) {
           player = nexplayerInstance;
           video = videoElement;
-          // Disable PiP
-          video.disablePictureInPicture = true;
-          // Listen to this event in case the HTMLMediaElement's property
-          // 'disablePictureInPicture' is set to false
-          video.addEventListener('enterpictureinpicture', () => {
-            console.log('Entering PiP mode', document.pictureInPictureElement);
-            if (document.pictureInPictureElement) {
-              // Exit the PiP mode immediately
-              document.exitPictureInPicture();
-              // Deactivate again
-              video.disablePictureInPicture = true;
-            }
-          });
-
         }
-        const nexDrmInfoWvBell = {
-            NexDRMType: 'com.widevine.alpha',
-            NexDRMKey: 'https://license-staging.9c9media.ca/widevine',
-        };
-        const nexDrmInfoPrBell = {
-            NexDRMType: 'com.microsoft.playready',
-            NexDRMKey: 'https://license-staging.9c9media.ca/playready',
-        };
-        let drm = null;
-        let src = null;
-        if (navigator.userAgent.indexOf('PlayStation') !== -1) {
-          drm = nexDrmInfoPrBell;
-          src = 'https://u1.video.9c9media.com/video/v1/126503/dash/playready/zultimate-01010101/manifest.mpd';
-        } else {
-          drm = nexDrmInfoWvBell;
-          src = 'https://u1.video.9c9media.com/video/v1/126503/dash/widevine/zultimate-01010101/manifest.mpd';
-        }
-
-        nexplayer.AdsEvents('adblockstart', () => {
-          // When the ads start add the ad redirect behavior on clicking the player container
-          // const playerContainer = document.getElementById('player-container');
-          // if (playerContainer) {
-          //   playerContainer.onclick = () => {
-          //     const adVideo = document.getElementsByClassName("rmp-video")[0];
-          //     adVideo && adVideo.click();
-          //   };
-          // }
-        });
-        nexplayer.AdsEvents('adblockend', () => {
-          // When the ads start remove the ad redirect behavior on clicking the player container
-          // const playerContainer = document.getElementById('player-container');
-          // if (playerContainer) {
-          //   playerContainer.onclick = null;
-          // }
-        });
-        nexplayer.Setup({
+          nexplayer.Setup({
           key: "5e9dd7b892f3493ec4667e66",
           div: document.getElementById('player'),
           autoplay: true,
@@ -133,15 +84,6 @@
           src: 'https://media.axprod.net/TestVectors/Dash/not_protected_dash_1080p_h264/manifest.mpd',
           //adsMode: 'ima',
           vast: 'https://pubads.g.doubleclick.net/gampad/ads?iu=/21775744923/external/vmap_ad_samples&sz=640x480&cust_params=sample_ar%3Dpreonly&ciu_szs=300x250%2C728x90&gdfp_req=1&ad_rule=1&output=vmap&unviewed_position_start=1&env=vp&impl=s&correlator=' + Date.now(),
-          configuration: {
-            drm: {
-              advanced: {
-                  'com.microsoft.playready': {
-                      distinctiveIdentifierRequired: true,
-                  },
-              }
-            },
-          },
           // Use this property when the app detects that the user resumes from
           // a bookmark or is in session for more than 40 minutes.
           resumePosition: 0,
