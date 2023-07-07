@@ -107,20 +107,20 @@
 
         nexplayer.AdsEvents('adblockstart', () => {
           // When the ads start add the ad redirect behavior on clicking the player container
-          const playerContainer = document.getElementById('player-container');
-          if (playerContainer) {
-            playerContainer.onclick = () => {
-              const adVideo = document.getElementsByClassName("rmp-video")[0];
-              adVideo && adVideo.click();
-            };
-          }
+          // const playerContainer = document.getElementById('player-container');
+          // if (playerContainer) {
+          //   playerContainer.onclick = () => {
+          //     const adVideo = document.getElementsByClassName("rmp-video")[0];
+          //     adVideo && adVideo.click();
+          //   };
+          // }
         });
         nexplayer.AdsEvents('adblockend', () => {
           // When the ads start remove the ad redirect behavior on clicking the player container
-          const playerContainer = document.getElementById('player-container');
-          if (playerContainer) {
-            playerContainer.onclick = null;
-          }
+          // const playerContainer = document.getElementById('player-container');
+          // if (playerContainer) {
+          //   playerContainer.onclick = null;
+          // }
         });
         nexplayer.Setup({
           key: "5e9dd7b892f3493ec4667e66",
