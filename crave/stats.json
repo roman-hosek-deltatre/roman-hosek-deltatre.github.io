@@ -3,10 +3,10 @@
     "app": "app.cc27e4a.c.js",
     "axis": [
       "9.4aec25d.css",
-      "axis.76f5bc1.c.js"
+      "axis.074c617.c.js"
     ],
-    "manifest": "manifest.0734aa0.js",
-    "vendors~axis": "vendors~axis.5d23f60.c.js"
+    "manifest": "manifest.f302d67.js",
+    "vendors~axis": "vendors~axis.660dcfe.c.js"
   },
   "assets": [
     {
@@ -22,7 +22,7 @@
       "emitted": false
     },
     {
-      "name": "0.fec6c8d.c.js",
+      "name": "0.f60d5b4.c.js",
       "size": 146108,
       "chunks": [
         0
@@ -46,7 +46,7 @@
       "emitted": false
     },
     {
-      "name": "1.b9bec1e.c.js",
+      "name": "1.d52d4c0.c.js",
       "size": 235522,
       "chunks": [
         1
@@ -58,7 +58,7 @@
       "emitted": false
     },
     {
-      "name": "12.ba96230.c.js",
+      "name": "12.66a8704.c.js",
       "size": 1056278,
       "chunks": [
         12
@@ -82,19 +82,6 @@
       "emitted": false
     },
     {
-      "name": "13.3320cb0.c.js",
-      "size": 276549,
-      "chunks": [
-        13,
-        0
-      ],
-      "chunkNames": [],
-      "info": {
-        "immutable": true
-      },
-      "emitted": false
-    },
-    {
       "name": "13.591008c.css",
       "size": 7888,
       "chunks": [
@@ -108,10 +95,11 @@
       "emitted": false
     },
     {
-      "name": "14.5e98667.c.js",
-      "size": 270157,
+      "name": "13.7a69986.c.js",
+      "size": 276549,
       "chunks": [
-        14
+        13,
+        0
       ],
       "chunkNames": [],
       "info": {
@@ -122,6 +110,18 @@
     {
       "name": "14.7f6b024.css",
       "size": 6823,
+      "chunks": [
+        14
+      ],
+      "chunkNames": [],
+      "info": {
+        "immutable": true
+      },
+      "emitted": false
+    },
+    {
+      "name": "14.9f05336.c.js",
+      "size": 270157,
       "chunks": [
         14
       ],
@@ -168,7 +168,7 @@
       "emitted": false
     },
     {
-      "name": "16.d0e5286.c.js",
+      "name": "16.f0ede3e.c.js",
       "size": 84372,
       "chunks": [
         16
@@ -180,8 +180,8 @@
       "emitted": false
     },
     {
-      "name": "17.a6c6594.css",
-      "size": 3660,
+      "name": "17.2b03e2b.c.js",
+      "size": 116098,
       "chunks": [
         17
       ],
@@ -192,8 +192,8 @@
       "emitted": false
     },
     {
-      "name": "17.da5d78f.c.js",
-      "size": 116098,
+      "name": "17.a6c6594.css",
+      "size": 3660,
       "chunks": [
         17
       ],
@@ -240,22 +240,10 @@
       "emitted": false
     },
     {
-      "name": "19.8e1fc24.c.js",
+      "name": "19.af0ec59.c.js",
       "size": 63114,
       "chunks": [
         19
-      ],
-      "chunkNames": [],
-      "info": {
-        "immutable": true
-      },
-      "emitted": false
-    },
-    {
-      "name": "2.1004907.c.js",
-      "size": 66728,
-      "chunks": [
-        2
       ],
       "chunkNames": [],
       "info": {
@@ -276,8 +264,20 @@
       "emitted": false
     },
     {
-      "name": "20.5a0476c.css",
-      "size": 2916,
+      "name": "2.f8bddf5.c.js",
+      "size": 66728,
+      "chunks": [
+        2
+      ],
+      "chunkNames": [],
+      "info": {
+        "immutable": true
+      },
+      "emitted": false
+    },
+    {
+      "name": "20.57d69ba.c.js",
+      "size": 82461,
       "chunks": [
         20
       ],
@@ -288,8 +288,8 @@
       "emitted": false
     },
     {
-      "name": "20.7c0db5a.c.js",
-      "size": 82461,
+      "name": "20.5a0476c.css",
+      "size": 2916,
       "chunks": [
         20
       ],
@@ -348,7 +348,7 @@
       "emitted": false
     },
     {
-      "name": "23.1f97d93.c.js",
+      "name": "23.66a666c.c.js",
       "size": 50225,
       "chunks": [
         23
@@ -372,7 +372,7 @@
       "emitted": false
     },
     {
-      "name": "24.7f260b0.c.js",
+      "name": "24.1fc9d56.c.js",
       "size": 74275,
       "chunks": [
         24
@@ -396,7 +396,7 @@
       "emitted": false
     },
     {
-      "name": "25.85bda05.c.js",
+      "name": "25.351ad12.c.js",
       "size": 24173,
       "chunks": [
         25
@@ -444,18 +444,6 @@
       "emitted": false
     },
     {
-      "name": "3.1d9139d.c.js",
-      "size": 250465,
-      "chunks": [
-        3
-      ],
-      "chunkNames": [],
-      "info": {
-        "immutable": true
-      },
-      "emitted": false
-    },
-    {
       "name": "3.584731e.css",
       "size": 14694,
       "chunks": [
@@ -468,7 +456,19 @@
       "emitted": false
     },
     {
-      "name": "4.868b612.c.js",
+      "name": "3.7a9e6ab.c.js",
+      "size": 250465,
+      "chunks": [
+        3
+      ],
+      "chunkNames": [],
+      "info": {
+        "immutable": true
+      },
+      "emitted": false
+    },
+    {
+      "name": "4.94fdb1d.c.js",
       "size": 764998,
       "chunks": [
         4
@@ -568,8 +568,8 @@
       "emitted": false
     },
     {
-      "name": "axis.76f5bc1.c.js",
-      "size": 8225430,
+      "name": "axis.074c617.c.js",
+      "size": 8225099,
       "chunks": [
         9
       ],
@@ -1102,7 +1102,7 @@
       "emitted": false
     },
     {
-      "name": "manifest.0734aa0.js",
+      "name": "manifest.f302d67.js",
       "size": 3819,
       "chunks": [
         10
@@ -1140,7 +1140,7 @@
       "emitted": false
     },
     {
-      "name": "vendors~axis.5d23f60.c.js",
+      "name": "vendors~axis.660dcfe.c.js",
       "size": 3567404,
       "chunks": [
         11
@@ -1154,7 +1154,7 @@
       "emitted": false
     }
   ],
-  "hash": "ad992c0",
+  "hash": "7f599dd",
   "publicPath": "./",
   "namedChunkGroups": {
     "app": {
@@ -1163,7 +1163,7 @@
         8
       ],
       "assets": [
-        "manifest.0734aa0.js",
+        "manifest.f302d67.js",
         "app.cc27e4a.c.js"
       ],
       "children": {},
@@ -1175,9 +1175,9 @@
         9
       ],
       "assets": [
-        "vendors~axis.5d23f60.c.js",
+        "vendors~axis.660dcfe.c.js",
         "9.4aec25d.css",
-        "axis.76f5bc1.c.js"
+        "axis.074c617.c.js"
       ],
       "children": {},
       "childAssets": {}
